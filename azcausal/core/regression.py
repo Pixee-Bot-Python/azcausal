@@ -38,9 +38,9 @@ class CausalRegression(object):
             if self.mode == "PanelOLS":
 
                 if self.time_effects:
-                    formula += f' + TimeEffects'
+                    formula += ' + TimeEffects'
                 if self.unit_effects:
-                    formula += f' + EntityEffects'
+                    formula += ' + EntityEffects'
 
                 data = pd.DataFrame(cdf).set_index(['unit', 'time'])
                 if weights is not None:
@@ -54,9 +54,9 @@ class CausalRegression(object):
 
             elif self.mode == "OLS":
                 if self.time_effects:
-                    formula += f' + C(time)'
+                    formula += ' + C(time)'
                 if self.unit_effects:
-                    formula += f' + C(unit)'
+                    formula += ' + C(unit)'
 
                 if weights is not None:
                     res = smf.wls(formula=formula, data=cdf.reset_index(), weights=cdf[weights]).fit()
