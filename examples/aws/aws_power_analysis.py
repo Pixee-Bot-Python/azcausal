@@ -105,7 +105,7 @@ if __name__ == "__main__":
 
     fig, (top, bottom) = plt.subplots(2, 1, figsize=(12, 8))
 
-    fig.suptitle(f'CaliforniaProp99', fontsize=16)
+    fig.suptitle('CaliforniaProp99', fontsize=16)
 
     top.plot(pw['att'], pw['-'], "-o", color="red", label='-')
     top.plot(pw['att'], pw['+'], "-o", color="green", label='+')

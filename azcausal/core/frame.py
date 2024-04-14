@@ -41,13 +41,13 @@ class CausalDataFrame(pd.DataFrame, CausalData):
     def filter(self, pre=None, post=None, contr=None, treat=None):
         df = self
         if (treat is True) or (contr is False):
-            df = df.query(f"treatment == 1")
+            df = df.query("treatment == 1")
         if (treat is False) or (contr is True):
-            df = df.query(f"treatment == 0")
+            df = df.query("treatment == 0")
         if (post is True) or (pre is False):
-            df = df.query(f"post == 1")
+            df = df.query("post == 1")
         if (post is False) or (pre is True):
-            df = df.query(f"post == 0")
+            df = df.query("post == 0")
         return df
 
     def reload(self, overwrite=False):
