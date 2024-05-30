@@ -6,6 +6,7 @@ import pandas as pd
 from azcausal.core.panel import Panel
 from azcausal.core.donors import NearestNeighbors
 from azcausal.core.estimator import Estimator, results_from_outcome
+import math
 
 try:
     import networkx as nx
@@ -252,7 +253,7 @@ class SNN(Estimator):
 
     # retain all singular values that compose at least (100*self.spectral_t)% spectral energy
     def _spectral_rank(self, s):
-        if self.spectral_t == 1.0:
+        if math.isclose(self.spectral_t, 1.0, rel_tol=1e-09, abs_tol=0.0):
             rank = len(s)
         else:
             total_energy = (s ** 2).cumsum() / (s ** 2).sum()
